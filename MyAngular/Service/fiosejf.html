@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="script.js"></script>
+	<script src="stringService.js"></script>
+</head>
+<body ng-app="myModule">
+	<div ng-controller="myController">
+	Input:<input type="text" ng-model="input" >
+	Output:<input type="text" ng-model="output" >
+	<input type="button" value="change" ng-click="change(input)">
+	
+	</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="script.js"></script>
+</head>
+<body ng-app="myModule">
+	<div ng-controller="myController">
+	Rows To Display: <input type="number"  step="1" min="1" max="5" ng-model="rowLimit">
+	Order BY : <select ng-model="sortColumn" >
+	           <option value="name">Name ASC</option>
+	           <option value="gender">Gender ASC</option>
+	           <option value="dateOfBirth">Date od Birth ASC</option>
+	           <option value="-salary">Salary DESC</option>
+	           </select>
+	<br>
+	<br>
+	<table border="1px">
+	<thead>
+	<tr>
+	<th ng-click="sortData('name')">Name</th>
+	<th ng-click="sortData('dateOfBirth')">Date Of Birth</th>
+	<th ng-click="sortData('gender')">Gender</th>
+	<th ng-click="sortData('salary')">Salary(number)</th>
+	<th ng-click="sortData('salary')">Salary(currency)</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="employee in employees| orderBy:sortColumn:reverseSort">
+	<td>{{employee.name| uppercase}}</td>
+	<td>{{employee.dateOfBirth| date:"dd/MM/yyyy"}}</td>
+	<td>{{employee.gender|lowercase}}</td>
+	<td>{{employee.salary|number:3}}</td>
+	<td>{{employee.salary|currency}}</td>
+	
+	</tr>
+	</tbody>
+	</table>
+	</div>
+</body>
+</html>

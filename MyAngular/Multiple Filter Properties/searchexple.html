@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="script.js"></script>
+</head>
+<body ng-app="myModule">
+	<div ng-controller="myController">
+	Search: <input type="text" placeholder="Search Name" ng-model="searchText.name">
+	        <input type="text" placeholder="Search Date" ng-model="searchText.dateOfBirth">
+            <input type="checkbox" ng-model="exactMatch">Exact Match	
+	<br>
+	<br>
+	<table border="1px">
+	<thead>
+	<tr>
+	<th>Name</th>
+	<th >Date Of Birth</th>
+	<th >Gender</th>
+	<th>Salary(number)</th>
+	<th>Salary(currency)</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="employee in employees| filter:searchText:exactMatch">
+	<td>{{employee.name| uppercase}}</td>
+	<td>{{employee.dateOfBirth| date:"dd/MM/yyyy"}}</td>
+	<td>{{employee.gender|lowercase}}</td>
+	<td>{{employee.salary|number:3}}</td>
+	<td>{{employee.salary|currency}}</td>
+	
+	</tr>
+	</tbody>
+	</table>
+	</div>
+</body>
+</html>
